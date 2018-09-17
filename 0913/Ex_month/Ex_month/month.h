@@ -1,4 +1,10 @@
-#pragma once
+/***********************
+
+ * Author:	Yu Xiaoyuan
+ * Date:	2018-9-17 23:10:24
+ * Email:	yuxiaoyuan0406@hotmail.com
+
+ ***********************/
 #ifndef MONTH_H
 #define MONTH_H
 
