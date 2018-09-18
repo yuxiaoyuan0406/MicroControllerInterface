@@ -38,3 +38,4 @@
 *.sln
 **/Debug/*
 **/Debug
+**/.vs
