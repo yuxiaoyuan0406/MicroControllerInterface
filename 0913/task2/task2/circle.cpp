@@ -1,3 +1,11 @@
+/***********************
+
+ * Author:	Yu Xiaoyuan
+ * Date:	2018-9-17 23:10:24
+ * Email:	yuxiaoyuan0406@hotmail.com
+
+ ***********************/
+
 #include "stdafx.h"
 #define PI 3.1415926536
 

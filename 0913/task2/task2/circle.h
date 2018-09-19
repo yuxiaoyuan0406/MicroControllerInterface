@@ -1,4 +1,13 @@
-#pragma once
+/***********************
+
+ * Author:	Yu Xiaoyuan
+ * Date:	2018-9-17 23:10:24
+ * Email:	yuxiaoyuan0406@hotmail.com
+
+ ***********************/
+#ifndef CIRCLE_H
+#define CIRCLE_H
+
 #include "stdafx.h"
 
 void getVal(const char msg[], float &arg);
@@ -20,3 +29,5 @@ double calBallVolume(float radius);
 double calBallVolume();
 
 double calCylinderVolume();
+
+#endif // !CIRCLE_H
