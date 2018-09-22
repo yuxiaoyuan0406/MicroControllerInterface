@@ -12,6 +12,7 @@
 
 using namespace std;
 
+bool like_to_change(const string & msg, ostream & out = cout, istream & in = cin);
 
 //一个座位类型的枚举
 //最后一个是错误标记
@@ -29,7 +30,7 @@ seatType operator!(seatType type);
 //用于输出座位类型
 ostream &operator<<(ostream & out, seatType & type);
 
-//崇再乐一个>>操作符
+//重载了一个>>操作符
 //用于输入座位类型
 //只能输入1或2
 istream &operator>>(istream & in, seatType & type);
@@ -66,13 +67,15 @@ private:
 
 	//声明剩余座位数
 	int left_seats = 10;
+
 public:
+
 	//声明航班号
 	flightName name = A;
 public:
 	//空的构造函数
 	flight();
-	
+
 	//输入起飞时间的初始化函数
 	flight(int hour);
 
@@ -95,7 +98,7 @@ public:
 
 	//输出登机牌的函数
 	//要求输入座位号
-	void printBoardingPass(int searNum);
+	void printBoardingPass(int seatNum);
 
 	//输出所有已被预定的座位的登机牌
 	void printBoardingPass();
@@ -103,6 +106,9 @@ public:
 	//输出座位状态
 	//参数为输出流
 	void printSeatStatus(ostream &out = cout);
+
+	//返回某个座位的状态
+	bool seatStatus(int seatNum);
 
 	//空的析构函数
 	~flight();
@@ -112,7 +118,7 @@ public:
 //用于输出航班座位状态
 ostream & operator<<(ostream & out, flight & obj);
 
-//一个航空公司的对象
+//一个航空公司的类
 class orderSystem
 {
 private:
@@ -126,9 +132,12 @@ public:
 	//空的构造函数
 	orderSystem();
 
+	//空的析构函数
+	~orderSystem();
+
 	//输入航班数, 第一班起飞时间, 间隔时间的构造函数
 	orderSystem(int flightNum, int beginTime, int emptyHour);
-
+private:
 	//判断航班号是否存在的函数
 	//存在返回航班在flights中的下标
 	//不存在则返回-1
@@ -140,15 +149,28 @@ public:
 	//选择座位的函数
 	int chooseSeat(flight &selectedFlight, ostream & out = cout, istream & in = cin);
 
+//private:
+	
 	//预订座位的函数
-	void bookSeat(ostream & out = cout, istream & in =cin);
+	int bookSeat(ostream & out = cout, istream & in = cin);
 
-	//输出
+public:
+	//输出航班状态的函数
+	//有航班编号或没有
 	void printFlightStatus(flightName name, ostream & out = cout);
 	void printFlightStatus(ostream & out = cout);
-	~orderSystem();
+
+private:
+	//一个调试用函数
+	//内部调用了私有成员函数
+	int DEBUG();
+public:
+	//启动系统
+	int system_begin(ostream & out = cout, istream & in = cin);
 };
 
+//重载了一个<<操作符
+//用于输出航班状态
 ostream & operator<<(ostream & out, orderSystem & system);
 
 #endif // !FLIGHT_H

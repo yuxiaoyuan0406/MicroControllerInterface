@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "flight.h"
 
-
 flight::flight()
 {
 }
@@ -23,9 +22,10 @@ void flight::rename(const flightName newName)
 
 bool flight::isAviliable(seatType type)
 {
-	for (int i = 0; i < type*5; i++)
+	for (int i = 0; i < 5; i++)
 	{
-		if (seats_status[i + (type - 1) * 5] == 0)
+		int c = i + (type - 1) * 5;
+		if (seats_status[c] == 0)
 			return true;
 	}
 	return false;
@@ -123,6 +123,15 @@ void flight::printSeatStatus(ostream &out)
 		out << "No economy seat aviliable. " << endl;
 }
 
+bool flight::seatStatus(int seatNum)
+{
+	if (seats_status[seatNum-1] == 0)
+	{
+		return true;
+	}
+	return false;
+}
+
 
 flight::~flight()
 {
@@ -152,7 +161,7 @@ int orderSystem::flightExist(flightName name)
 	return -1;
 }
 
-flightName orderSystem::chooseFlight(ostream &out, istream &in)
+flightName orderSystem::chooseFlight(ostream & out, istream & in)
 {
 	flightName choice;
 	out << "Choose a flight by typing in a flight number: ";
@@ -161,30 +170,29 @@ flightName orderSystem::chooseFlight(ostream &out, istream &in)
 	{
 		out << "No such flight " << choice << " exist. " << endl;
 		choice = chooseFlight(out, in);
+		return choice;
 	}
 
 	if (flights[flightExist(choice)].isAviliable(economy) || flights[flightExist(choice)].isAviliable(first_class))
 	{
 		out << "Flight " << choice << " selected. " << endl;
 		out << flights[flightExist(choice)];
+		return choice;
 	}
 	else
 	{
-		out << "Flight " << choice << " is all booked. " << endl
-//			<< "Next flight will take off in 3. " << endl
-			<< "Would you like to change? (Y/n)" << endl;
-		char changeFlight;
-		cin >> changeFlight;
-		if (changeFlight=='y'||changeFlight=='Y')
+		out << "Flight " << choice << " is all booked. " << endl;
+		bool willChange = like_to_change("Would you like to change another flight? (Y/n)", out, in);
+		if (willChange)
 		{
 			choice = chooseFlight(out, in);
+			return choice;
 		}
-		else if (changeFlight == 'n' || changeFlight == 'N')
+		else
 		{
-			choice = errorFlag;
+			return errorFlag;
 		}
 	}
-	return choice;
 }
 
 int orderSystem::chooseSeat(flight &selectedFlight, ostream & out, istream & in)
@@ -194,21 +202,46 @@ int orderSystem::chooseSeat(flight &selectedFlight, ostream & out, istream & in)
 	in >> selectedType;
 	if (selectedFlight.isAviliable(selectedType) == false)
 	{
-
+		out << "Current seat type's all been booked. \n";
+		bool willChange = like_to_change("Would you like to change? (Y/n)", out, in);
+		if (willChange)
+		{
+			selectedType = !selectedType;
+		}
+		else
+		{
+			return -1;
+		}
 	}
-	return 0;
+
+	for (int i = 0; i < 5; i++)
+	{
+		if (selectedFlight.seatStatus(i + 1 + (selectedType - 1) * 5))
+		{
+			return i + 1;
+		}
+	}
+
+	out << "This flight's all been booked. \n";
+	return -1;
 }
 
-void orderSystem::bookSeat(ostream & out, istream &in)
+int orderSystem::bookSeat(ostream & out, istream &in)
 {
-	out << "Welcome to flight order system. \n";
-	out << *this;
 	flightName selectedFlightNumber = chooseFlight(out, in);
+
 	if (selectedFlightNumber == errorFlag)
-		return;
+		return -1;
+
 	flight & selectedFlight = flights[flightExist(selectedFlightNumber)];
 	int selectedSeat = chooseSeat(selectedFlight, out, in);
-//	out << choice;
+
+	if (selectedSeat == -1)
+		return -1;
+
+	selectedFlight.orderSeat(selectedSeat);
+	selectedFlight.printBoardingPass(selectedSeat);
+	return 0;
 }
 
 void orderSystem::printFlightStatus(flightName name, ostream & out)
@@ -225,8 +258,51 @@ void orderSystem::printFlightStatus(ostream & out)
 	}
 }
 
+int orderSystem::DEBUG()
+{
+	/*
+	for (int i = 0; i < 10; i++)
+	{
+		this->flights[0].orderSeat(i + 1);
+	}
+	*/
+	while (1)
+	{
+		this->bookSeat();
+	}
+	return 0;
+}
+
+int orderSystem::system_begin(ostream & out, istream & in)
+{
+	out << "______________________________\nWelcome to flight order system. \n";
+	out << *this;
+	while (1) 
+	{
+		this->bookSeat(out, in);
+	}
+	return 0;
+}
+
 orderSystem::~orderSystem()
 {
+}
+
+bool like_to_change(const string & msg, ostream & out, istream & in)
+{
+	out << msg << endl;
+	char choice;
+	in >> choice;
+
+	if (choice == 'y' || choice == 'Y')
+	{
+		return true;
+	}
+	else if (choice == 'n' || choice == 'N')
+	{
+		return false;
+	}
+	return like_to_change(msg, out, in);
 }
 
 seatType operator!(seatType type)
