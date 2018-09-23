@@ -2,6 +2,7 @@
  * Author:	Yu Xiaoyuan
  * Time:	2018-9-20 18:17:04
  * Email:	yuxiaoyuan0406@hotmail.com
+ * Latest:	2018-9-23 23:35:45
 */
 
 #pragma once
@@ -12,7 +13,10 @@
 
 using namespace std;
 
-bool like_to_change(const string & msg, ostream & out = cout, istream & in = cin);
+//提示信息询问是否更改选择的函数
+//是返回真
+//否返回假
+bool like_to_change(const string & msg = "Would you like to change? (Y/n)", ostream & out = cout, istream & in = cin);
 
 //一个座位类型的枚举
 //最后一个是错误标记
@@ -98,10 +102,10 @@ public:
 
 	//输出登机牌的函数
 	//要求输入座位号
-	void printBoardingPass(int seatNum);
+	void printBoardingPass(int seatNum, ostream & out = cout);
 
 	//输出所有已被预定的座位的登机牌
-	void printBoardingPass();
+	void printBoardingPass(ostream & out = cout);
 
 	//输出座位状态
 	//参数为输出流
