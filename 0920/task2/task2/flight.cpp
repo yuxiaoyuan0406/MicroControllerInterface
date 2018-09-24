@@ -69,15 +69,15 @@ bool flight::cancelOrder(int seatNum)
 void flight::printBoardingPass(int seatNum, ostream & out)
 {	//打印登机牌
 	using namespace std;
-	for (int i = 0; i < 25; i++)
+	for (int i = 0; i < 33; i++)
 		out << "_";																//输出边框
 	out << endl;
-	out << "|\t\t\t|" << endl;													//输出一个空行, 美观
+	out << "|\t\t\t\t|" << endl;													//输出一个空行, 美观
 	out << "|\tFlight Number: " << this->name << "\t|" << endl;					//输出航班号
-	out << (seatNum < 5 ? "|\tfirst class\t|": "|  \tcoach\t\t|") << endl;		//输出座位类型
-	out << "|\tseat number: " << seatNum << "\t|" << endl;						//输出座位号
+	out << (seatNum < 5 ? "|\tfirst class\t\t|": "|  \tcoach\t\t\t|") << endl;		//输出座位类型
+	out << "|\tseat number: " << seatNum << "\t\t|" << endl;						//输出座位号
 	out << "|";
-	for (int i = 0; i < 23; i++)
+	for (int i = 0; i < 31; i++)
 		out << "_";
 	out << "|" << endl;
 }
@@ -235,7 +235,7 @@ int orderSystem::chooseSeat(flight & selectedFlight, ostream & out, istream & in
 	{
 		if (selectedFlight.seatStatus(i + 1 + (selectedType - 1) * 5))	//座位是随机分配, 那就从头开始挨着哪个算哪个
 		{
-			return i + 1;												//注意座位号是1~10, 这和数组编号不一样
+			return i + 1 + (selectedType - 1) * 5;												//注意座位号是1~10, 这和数组编号不一样
 		}
 	}
 
@@ -297,7 +297,8 @@ int orderSystem::DEBUG()
 
 int orderSystem::system_begin(ostream & out, istream & in)
 {	//启动系统函数
-	out << "______________________________\nWelcome to flight order system. \n";
+	out << "______________________________\n"
+		<< "Welcome to flight order system. \n";
 	out << *this;						//输出所有航班状态
 	while (1)							//死循环
 	{
@@ -360,21 +361,19 @@ ostream & operator<<(ostream & out, seatType & type)
 
 istream & operator>>(istream & in, seatType & type)
 {	//重载了输入座位类型的操作符
-	int input;
+	char input;
 	in >> input;
-	switch (input)
-	{
-	case 1:
+	if (input == '1')
 		type = first_class;				//输入1就是头等舱
-		break;
-	case 2:
+	else if(input == '2')
 		type = economy;					//输入2就是经济舱
-		break;
-	default:							//输入错误会发出警告并要求重新输入
-		cout << "!!!INPUT SEAT TYPE ERROR!!!\n";
-		cout << "Please type in seat type again. \n";
+	else
+	{									//输入错误会发出警告并要求重新输入
+		in.clear();
+		cout << "!!!INPUT SEAT TYPE ERROR!!!\n" << "NO SUCH SEAT TYPE" << endl;
+		cout << "Please type in seat type again. " << endl;
+		in.clear();
 		in >> type;
-		break;
 	}
 	// TODO: 在此处插入 return 语句
 	return in;
