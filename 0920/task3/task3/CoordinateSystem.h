@@ -8,6 +8,10 @@ struct point
 	double y;
 };
 
+//using namespace std;
+//输出一个点
+std::ostream & operator<<(std::ostream & out, const point & A);
+
 //返回横坐标差值, 后减去前
 double delta_x(const point & A, const point & B);
 
@@ -27,6 +31,9 @@ double abs(const point & A);
 
 //返回两点斜率
 double slope(const point & A, const point & B);
+
+//返回向量内积
+double operator*(const point & A, const point & B);
 
 //判断向量相等
 bool operator==(const point & A, const point & B);

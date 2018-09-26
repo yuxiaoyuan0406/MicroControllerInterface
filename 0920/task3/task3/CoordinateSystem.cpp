@@ -11,6 +11,12 @@ CoordinateSystem::~CoordinateSystem()
 {
 }
 
+std::ostream & operator<<(std::ostream & out, const point & A)
+{
+
+	return out;
+}
+
 double delta_x(const point & A, const point & B)
 {
 	return B.x - A.x;
@@ -49,6 +55,11 @@ double slope(const point & A, const point & B)
 	}
 }
 
+double operator*(const point & A, const point & B)
+{
+	return A.x * B.x + A.y * B.y;
+}
+
 bool operator==(const point & A, const point & B)
 {
 	if (A.x == B.x && A.y == B.y)
@@ -58,7 +69,7 @@ bool operator==(const point & A, const point & B)
 
 bool operator&&(const point & A, const point B)
 {
-	if (A == point({ 0,0 }) || B == point({ 0,0 }))
+	if (A*B == abs(A)*abs(B))
 		return true;
 	return false;
 }
