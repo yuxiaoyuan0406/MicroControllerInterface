@@ -6,6 +6,9 @@
 
  ***********************/
 #include "month.h"
+#ifndef YEAR_H
+
+#define YEAR_H
 
 class Year//定义了一个类
 {
@@ -19,3 +22,4 @@ public:
 	~Year();//空的析构函数
 };
 
+#endif // !YEAR_H
