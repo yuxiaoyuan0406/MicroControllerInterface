@@ -39,4 +39,18 @@
 **/Debug/*
 **/Debug
 **/.vs
-/~$接口技术实验C语言复习练习补充任务.docx
+
+# Document Files
+*.docx
+*.doc
+*.pdf
+*.psd
+*.pps
+
+# Keil Files
+*.uvgui.*
+*.__i
+*.build_log.*
+*.lnp
+**/Listings
+*.uvopt
