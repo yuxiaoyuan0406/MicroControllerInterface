@@ -1,6 +1,6 @@
 #include <reg52.h>
 
-sbit led = P2 ^ 0;
+sbit led = P1 ^ 5;
 
 void delay(unsigned int i)
 {
@@ -14,6 +14,6 @@ int main()
 	while(1)
 	{
 		led = ~led;
-		delay(0);
+		delay(50);
 	}
 }
