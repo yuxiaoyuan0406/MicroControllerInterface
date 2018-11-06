@@ -394,7 +394,7 @@
             <File>
               <FileName>system.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\system.c</FilePath>
+              <FilePath>.\User\system.c</FilePath>
             </File>
           </Files>
         </Group>
