@@ -398,6 +398,9 @@
             </File>
           </Files>
         </Group>
+        <Group>
+          <GroupName>EXAMPLE</GroupName>
+        </Group>
       </Groups>
     </Target>
   </Targets>

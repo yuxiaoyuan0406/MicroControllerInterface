@@ -43,13 +43,13 @@ do{									\
 
 #define Display_empty(pos)			\
 do{									\
-	COMMON = (pos << 2);			\
+	COMMON = ~(pos << 2);			\
 	DIGITAL = 0;					\
 }while(0)
 
 // display function
 void Display_str(char * str, uint8_t nArg);
-void Display_int(uint32_t num);
+//void Display_int(uint32_t num);
 
 // soft delay
 void delay(uint16_t nCount);
