@@ -46,6 +46,7 @@
 *.pdf
 *.psd
 *.pps
+*.xlsx
 
 # Keil Files
 *.uvgui.*
