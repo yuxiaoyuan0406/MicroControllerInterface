@@ -1,6 +1,8 @@
-#include "system.h"
+#include "digital.h"
 
 #define display_time 0xf
+
+sbit LE = P1 ^ 0;
 
 void main()
 {
@@ -9,11 +11,18 @@ void main()
 	uint8_t delay_time = 0x1f;
 	uint8_t digs;
 	
+	LE = 0;
+	
 	DigitalInit();
 	
 	while(1)
 	{
 		DigitalInit();
+//		for(digs = 0; digs < 16; digs++)
+//		{
+//			Display_number(0, digs);
+//			SOFT_DELAY;
+//		}
 		digs = 0;
 		SOFT_DELAY;
 		
@@ -40,7 +49,6 @@ void main()
 		
 		for (; iterator[0] != '\0'; iterator++)
 		{
-//			iterator[7] = '\0';
 			for(delay_time = display_time;
 				delay_time != 0;
 				delay_time--)
@@ -48,8 +56,5 @@ void main()
 				Display_str(iterator, 8);
 			}
 		}
-		
-//		Display_str(value, );
-		
 	}
 }

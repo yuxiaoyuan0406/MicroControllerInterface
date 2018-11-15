@@ -15,8 +15,6 @@ void BufferSendData(uint8_t SendVal)
 		S_CLK=0;
 		BUFFER_DELAY();
 		S_CLK=1;
-//		BUFFER_DELAY();
-//		S_CLK=0;
 	}
 }
 

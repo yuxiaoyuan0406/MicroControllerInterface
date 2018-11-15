@@ -46,7 +46,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>..\Objects\</OutputDirectory>
-          <OutputName>matrix_1</OutputName>
+          <OutputName>buzzer</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath>..\Startup</IncludePath>
+              <IncludePath></IncludePath>
             </VariousControls>
           </Ax51>
           <Lx51>
@@ -390,61 +390,6 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\main.c</FilePath>
-            </File>
-            <File>
-              <FileName>figure.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\User\figure.h</FilePath>
-            </File>
-            <File>
-              <FileName>main.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\User\main.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>SYSTEM</GroupName>
-          <Files>
-            <File>
-              <FileName>system.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\system.c</FilePath>
-            </File>
-            <File>
-              <FileName>system.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\User\system.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>KEYBOARD</GroupName>
-          <Files>
-            <File>
-              <FileName>keyboard.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\User\keyboard.h</FilePath>
-            </File>
-            <File>
-              <FileName>keyboard.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\keyboard.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>LED_MATRIX</GroupName>
-          <Files>
-            <File>
-              <FileName>matrix.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\matrix.c</FilePath>
-            </File>
-            <File>
-              <FileName>matrix.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\User\matrix.h</FilePath>
             </File>
           </Files>
         </Group>

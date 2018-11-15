@@ -1,0 +1,1 @@
+"src\matrix.c" INCDIR(.\Startup) SET (LARGE) DEBUG PRINT(.\Listings\matrix.lst) OBJECT(.\Objects\matrix.obj) EP

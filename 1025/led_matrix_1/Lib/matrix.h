@@ -1,7 +1,15 @@
+/*********
+ * File name	:	matrix.h
+ * Author		:	Yu Xiaoyuan
+ * Version		:	1.0.0
+ * Date			:	2018-11-13 10:11:53
+ * Description	:	led matrix driver, with a 8-bit buffer
+					HC595
+ * Function list:	BufferSendData, MatrixInit, Display_figure
+**/
 #ifndef __MATRIX_H
 #define __MATRIX_H
 
-#include <reg52.h>
 #include "system.h"
 
 // led matrix port
@@ -24,7 +32,7 @@ sbit S_CLK	=	P3 ^ 6;		//¥Æ–– ±÷”œﬂ
 void BufferSendData(uint8_t SendVal);
 
 // HC595 operator
-#define ENABLE_BUFFER()			\
+#define		ENABLE_BUFFER()		\
 do{								\
 	R_CLK=0;					\
 	BUFFER_DELAY();				\

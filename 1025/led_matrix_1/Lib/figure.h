@@ -1,3 +1,11 @@
+/*********
+ * File name	:	figure.h
+ * Author		:	Yu Xiaoyuan
+ * Version		:	1.0.0
+ * Date			:	2018-11-13 10:16:49
+ * Description	:	figures of some number and character
+ * Function list:	
+**/
 #ifndef __FIGURE_H
 #define __FIGURE_H
 
