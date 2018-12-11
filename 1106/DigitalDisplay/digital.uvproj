@@ -402,14 +402,14 @@
           <GroupName>DIGITAL_DISPLAY</GroupName>
           <Files>
             <File>
-              <FileName>digital.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Lib\digital.c</FilePath>
-            </File>
-            <File>
               <FileName>digital.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\lib\digital.h</FilePath>
+            </File>
+            <File>
+              <FileName>digital.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\SRC\digital.c</FilePath>
             </File>
           </Files>
         </Group>

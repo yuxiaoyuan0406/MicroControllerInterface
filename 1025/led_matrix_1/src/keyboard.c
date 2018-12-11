@@ -1,6 +1,9 @@
 #include "keyboard.h"
 
-// key matrix scan function
+/**	key matrix scan function
+ *	@param	传入的行数, 0 - 3
+ *	@return	读出的列数, 没有按下时返回0
+ */
 uint8_t scan_row(uint8_t row)
 {
 	switch(row)

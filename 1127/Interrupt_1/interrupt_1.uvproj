@@ -13,14 +13,14 @@
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>
-          <Device>STC12C2052AD</Device>
+          <Device>STC89C52RC</Device>
           <Vendor>STC</Vendor>
-          <Cpu>IRAM(0-0xFF) IROM(0-0x7FF) CLOCK(45000000)</Cpu>
+          <Cpu>IRAM(0-0xFF) XRAM(0-0xFF) IROM(0-0x1FFF) CLOCK(45000000) MODP2</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile>"LIB\STARTUP.A51" ("Standard 8051 Startup Code")</StartupFile>
           <FlashDriverDll></FlashDriverDll>
-          <DeviceId>61970</DeviceId>
-          <RegisterFile>STC12C2052AD.H</RegisterFile>
+          <DeviceId>61442</DeviceId>
+          <RegisterFile>STC89C5xRC.H</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -46,7 +46,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>blink</OutputName>
+          <OutputName>interrupt_1</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -110,7 +110,7 @@
           <SimDllName>S8051.DLL</SimDllName>
           <SimDllArguments></SimDllArguments>
           <SimDlgDll>DP51.DLL</SimDlgDll>
-          <SimDlgDllArguments>-pDR8051</SimDlgDllArguments>
+          <SimDlgDllArguments>-p51</SimDlgDllArguments>
           <TargetDllName>S8051.DLL</TargetDllName>
           <TargetDllArguments></TargetDllArguments>
           <TargetDlgDll>TP51.DLL</TargetDlgDll>
@@ -196,11 +196,11 @@
             <UseMultipleDPTR>0</UseMultipleDPTR>
             <UseOnchipXram>0</UseOnchipXram>
             <HadIRAM>1</HadIRAM>
-            <HadXRAM>0</HadXRAM>
+            <HadXRAM>1</HadXRAM>
             <HadIROM>1</HadIROM>
             <Moda2>0</Moda2>
             <Moddp2>0</Moddp2>
-            <Modp2>0</Modp2>
+            <Modp2>1</Modp2>
             <Mod517dp>0</Mod517dp>
             <Mod517au>0</Mod517au>
             <Mode2>0</Mode2>
@@ -233,7 +233,7 @@
               <RCB>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0xffff</Size>
+                <Size>0x10000</Size>
               </RCB>
               <RXB>
                 <Type>0</Type>
@@ -273,7 +273,7 @@
               <IRO>
                 <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x800</Size>
+                <Size>0x2000</Size>
               </IRO>
               <IRA>
                 <Type>0</Type>
@@ -283,7 +283,7 @@
               <XRA>
                 <Type>0</Type>
                 <StartAddress>0x0</StartAddress>
-                <Size>0x0</Size>
+                <Size>0x100</Size>
               </XRA>
               <XRA512>
                 <Type>0</Type>
@@ -324,7 +324,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>.\User;.\Inter</IncludePath>
             </VariousControls>
           </C51>
           <Ax51>
@@ -374,17 +374,47 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>Source Group 1</GroupName>
+          <GroupName>STARTUP</GroupName>
           <Files>
             <File>
               <FileName>STARTUP.A51</FileName>
               <FileType>2</FileType>
               <FilePath>.\STARTUP.A51</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>USER</GroupName>
+          <Files>
             <File>
               <FileName>main.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\main.c</FilePath>
+              <FilePath>.\USER\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>system.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\system.c</FilePath>
+            </File>
+            <File>
+              <FileName>system.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\user\system.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>INTERUPT</GroupName>
+          <Files>
+            <File>
+              <FileName>interrupt.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Inter\interrupt.h</FilePath>
+            </File>
+            <File>
+              <FileName>interrupt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\inter\interrupt.c</FilePath>
             </File>
           </Files>
         </Group>
