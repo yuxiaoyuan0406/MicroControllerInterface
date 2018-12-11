@@ -18,7 +18,6 @@ void PwmInit()
 	ET0 = 1;
 	TR0 = 1;
 	
-	P0 = 0;
 	pwm_width = 0;
 	ticker_counter = 0;
 }
