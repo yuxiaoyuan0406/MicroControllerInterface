@@ -13,4 +13,11 @@ typedef unsigned long	uint32_t;
 // soft delay
 void delay_ms(uint16_t nCount);
 
+//void delay(uint16_t nCount);
+
+typedef union {
+	uint16_t value;
+	uint8_t T[2];
+} ticker_union;
+
 #endif	// !__SYSTEM_H

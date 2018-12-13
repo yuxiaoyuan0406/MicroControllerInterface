@@ -4,7 +4,6 @@
 #include "system.h"
 
 // number to byte
-
 static uint8_t data Digital_number[] = 
 {
 	0x3F,	// 0011 1111 b		0
@@ -25,6 +24,8 @@ static uint8_t data Digital_number[] =
 	0x71,	// 0111 0001 b		F
 };
 
+//static uint8_t display_buff[9] = "\0";
+
 // LED port
 #define COMMON 		P2
 #define DIGITAL		P0
@@ -43,7 +44,7 @@ do{									\
 }while(0)
 
 // display function
-void Display_str(char * str, uint8_t nArg);
+//void Display_str(char * str, uint8_t nArg);
 //void Display_int(uint32_t num);
 
 // initiate
