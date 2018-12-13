@@ -3,13 +3,14 @@
 
 #include "system.h"
 
-static uint16_t wave_period_us = 10;
+typedef union {
+	uint16_t value;
+	uint8_t T[2];
+} ticker_union;
 
-static uint8_t high_8, low_8;
+static uint16_t wave_period_us;
 
-static uint8_t ticker_period;
-
-//void setPeriod(uint16_t);
+void setPeriod(uint16_t);
 
 void SquareWaveInit();
 

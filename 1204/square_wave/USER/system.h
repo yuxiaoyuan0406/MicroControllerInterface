@@ -4,6 +4,7 @@
 //#define PERIOD_MODE
 
 #include <STC89C5xRC.H>
+#include <absacc.h>
 
 typedef unsigned char	uint8_t;
 typedef unsigned int	uint16_t;
