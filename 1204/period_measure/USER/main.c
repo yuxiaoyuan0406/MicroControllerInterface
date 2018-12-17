@@ -6,17 +6,23 @@ uint8_t display_buff[9] = "\0";
 
 int main()
 {
-	uint16_t i;
+	uint32_t i;
 	
 	DigitalInit();
 	
-	sprintf(display_buff, "%d", 1234);
+//	sprintf(display_buff, "%ld", 65535);
+//	while(1);
 	while(1)
 	{
-		for(i = 0; i < 0xffff; i++)
+		for(i = MAXIUM_NUM; i > 0; i--)
 		{
-			sprintf(display_buff, "%d", i);
-			delay_ms(500);
+			sprintf(display_buff, "%ld", i);
+			delay_ms(100);
+		}
+		for(i = 0; i < MAXIUM_NUM; i++)
+		{
+			sprintf(display_buff, "%ld", i);
+			delay_ms(100);
 		}
 	}
 }

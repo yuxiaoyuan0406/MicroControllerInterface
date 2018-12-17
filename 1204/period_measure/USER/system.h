@@ -1,7 +1,7 @@
 #ifndef __SYSTEM_H
 #define __SYSTEM_H
 
-//#define PERIOD_MODE
+#define MAXIUM_NUM 0x5F5E0FF
 
 #include <STC89C5xRC.H>
 #include <absacc.h>
