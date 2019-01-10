@@ -4,7 +4,6 @@
 #define MAXIUM_NUM 0x5F5E0FF
 
 #include <STC89C5xRC.H>
-#include <absacc.h>
 
 typedef unsigned char	uint8_t;
 typedef unsigned int	uint16_t;
