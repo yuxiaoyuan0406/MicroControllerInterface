@@ -1,10 +1,10 @@
 #ifndef __DIGITAL_H
 #define __DIGITAL_H
 
-#include "system.h"
+#include "system.h"		// 包含系统头文件
 
 // number to byte
-static uint8_t data Digital_number[] = 
+static uint8_t data Digital_number[] = 	// 定义数字和显示对应的数组
 {
 	0x3F,	// 0011 1111 b		0
 	0x06,	// 0000 0110 b		1
@@ -24,28 +24,24 @@ static uint8_t data Digital_number[] =
 	0x71,	// 0111 0001 b		F
 };
 
-//static uint8_t display_buff[9] = "\0";
-
 // LED port
-#define COMMON 		P2
-#define DIGITAL		P0
+#define COMMON 		P2		// 公共地
+#define DIGITAL		P0		// 数码管显示端口
 
 // digital operators
+// 在某位(pos)显示某数(num)
 #define Display_number(pos, num)	\
 do{									\
 	COMMON = (pos << 2);			\
 	DIGITAL = Digital_number[num];	\
 }while(0)
 
+// 清空某位(pos)
 #define Display_empty(pos)			\
 do{									\
 	COMMON = ~(pos << 2);			\
 	DIGITAL = 0;					\
 }while(0)
-
-// display function
-//void Display_str(char * str, uint8_t nArg);
-//void Display_int(uint32_t num);
 
 // initiate
 void DigitalInit();
